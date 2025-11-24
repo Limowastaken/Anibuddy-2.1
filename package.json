@@ -1,0 +1,25 @@
+{
+  "name": "anibuddy",
+  "version": "1.0.0",
+  "description": "Anibuddy — anime search PWA (Jikan API) with Capacitor wrapper and CI",
+  "scripts": {
+    "start": "npx http-server -c-1 -p 8080",
+    "test": "jest",
+    "build": "echo \"no build step for static PWA\"",
+    "cap:init": "npx @capacitor/cli init Anibuddy com.example.anibuddy",
+    "cap:add-android": "npx cap add android",
+    "cap:copy": "npx cap copy",
+    "lint": "echo \"no linter configured\""
+  },
+  "author": "Anibuddy",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "http-server": "^14.1.1",
+    "@babel/preset-env": "^7.20.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {}
+  }
+}
