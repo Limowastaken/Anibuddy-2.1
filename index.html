@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Anibuddy — lightweight anime search</title>
+
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+
+  <meta name="description" content="Anibuddy — search anime from Jikan API, save favorites, installable PWA." />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <img src="/icons/icon.svg" alt="Anibuddy" class="logo" />
+      <h1>Anibuddy</h1>
+    </div>
+
+    <div class="search-row">
+      <input id="searchInput" placeholder="Search anime (e.g. naruto, one piece)" autocomplete="off" />
+      <button id="clearBtn" title="Clear search">✕</button>
+      <div id="suggestions" class="suggestions" aria-hidden="true"></div>
+    </div>
+
+    <div class="filters-row">
+      <select id="filterType" aria-label="Filter by type">
+        <option value="">Any type</option>
+        <option value="tv">TV</option>
+        <option value="movie">Movie</option>
+        <option value="ova">OVA</option>
+        <option value="special">Special</option>
+      </select>
+
+      <select id="filterStatus" aria-label="Filter by status">
+        <option value="">Any status</option>
+        <option value="airing">Airing</option>
+        <option value="finished">Finished</option>
+        <option value="upcoming">Upcoming</option>
+      </select>
+
+      <label class="auto-refresh">
+        <input type="checkbox" id="autoRefreshToggle" /> Auto-refresh
+      </label>
+      <input id="autoRefreshInterval" type="number" min="10" value="60" title="Seconds" />
+    </div>
+
+    <nav class="tabs">
+      <button id="tab-search" class="active">Search</button>
+      <button id="tab-fav">Favorites <span id="fav-count" class="badge">0</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="searchView" class="view active">
+      <div id="results" class="grid"></div>
+      <div id="emptySearch" class="empty">Try searching for an anime above.</div>
+      <div id="scrollSentinel" class="sentinel" aria-hidden="true"></div>
+    </section>
+
+    <section id="favView" class="view">
+      <div id="favoritesGrid" class="grid"></div>
+      <div id="emptyFav" class="empty">No favorites yet — tap the ☆ on a card to save one.</div>
+      <div class="fav-actions">
+        <button id="exportFavs" class="btn">Export favorites</button>
+        <input id="importFile" type="file" accept=".json" style="display:none"/>
+        <button id="importFavs" class="btn">Import favorites</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- details modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="modalClose" class="close">Close</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <small>Powered by Jikan API • Works offline for cached results • Built with ❤️ by Limo</small>
+  </footer>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
