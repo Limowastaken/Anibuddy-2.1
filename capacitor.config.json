@@ -1,0 +1,6 @@
+{
+  "appId": "com.example.anibuddy",
+  "appName": "Anibuddy",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}
